@@ -6,119 +6,140 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-         // pelindrome
+     <script>
+        //  Q1-rev of digit
 
-        // var x =Number(prompt("enter the number :"))
-        // var reverse = 0,rem
-        // var y = x;
+        // let num = 123;
+        // let sum = 0;
 
-
-        // while(x > 0){
-        //     rem = x % 10;
-        //     reverse = reverse * 10 + rem;
-        //     x = parseInt(x/10);
+        // while (num > 0) {
+        //     rem = num % 10;
+        //     sum = sum * 10 + rem;
+        //     num = Math.floor(num / 10);
         // }
-        // console.log(reverse);
+        // document.write(sum);
 
-        // if(reverse == y){
-        //     console.log("Pallindrome number");
+
+        // Q2-sum of digit
+
+        // let num = 123;
+        // let sum = 0;
+
+        // while (num > 0) {
+        //     sum += num % 10;
+        //     num = Math.floor(num / 10);
+        // }
+
+        // document.write(sum);
+        
+
+
+        // Q3-prime number
+
+        // var n = Number(prompt("enter the number :"))
+        // var flag = 0;
+
+        // if (n == 0 || n == 1) {
+        //     console.log("number is nor prime")
+        // }
+
+        // for (i = 2; i < n / 2; i++) {
+        //     if (n % i == 0) {
+        //         flag = 1
+        //     }
+        // }
+        // if(flag==0){
+        //     console.log("number is prime")
+        // }else{
+        //     console.log("number is not prime")
+        // }
+
+
+
+        // Q4-prime fact
+
+        // let a = Number(prompt("enter the number :"))
+
+        // let c = 2;
+
+        // while (a > 1) {
+        //     if (a % c == 0) {
+        //         console.log(c);
+        //         a = a / c;
+        //     }
+        //     else {
+        //         c++;
+        //     }
+        // }
+
+
+
+        // // Q5-fibnocci  series
+
+
+        // var a=0,b=1,c,n,i=2;
+
+        // var n=Number(prompt("enter the number"))
+
+        // console.log(a)
+        // console.log(b)
+
+        // while(i<n){
+        //     c=a+b;
+        //     document.write(c);
+        //     a=b;
+        //     b=c;
+        //     i++
+        // }
+
+
+
+
+        // Q6-palindrome number    
+
+        // let  n = Number(prompt("enter the number :"))
+        // let  p = n;
+        // let  rev = 0;
+
+        // while (n > 0) {
+        //     rem = n % 10;
+        //     rev = rev * 10 + rem;
+        //     n = Math.floor(n / 10);
+        // }
+
+        // if (p == rev) {
+        //      document.write("this is the palindrome number:",rev)
         // }
         // else{
-        //     console.log("not a pallindrome number");
+        //     document.write("this is the not palindrome number:",p)
         // }
 
-         //  Armstrong Number
 
-        // var x = Number(prompt("Enter the number:"));
-        // var rem; temp = 0;
-        // y = x;
 
-        // while (x > 0) {
-        //     rem = x % 10;
+        // Q7-armstrong number
+
+        // let n = Number(prompt("enter the number :"))
+        // let rem; temp = 0;
+        // y = n;
+
+        // while (n > 0) {
+        //     rem = n % 10;
         //     temp = temp + (rem * rem * rem);
-        //     x = parseInt(x / 10);
+        //     n = parseInt(n / 10);
         // }
+
         // console.log(temp);
 
         // if (temp == y) {
-        //     console.log("This is a Armstrong Number:");
+        //     document.write("this is the armstrong number")
         // }
         // else {
-        //     console.log("This is not a Armstrong Number:");
+        //     document.write("this is a not the armstrong number")
         // }
 
-        // prime number
 
-        // var num = 5 ; 
+       
 
-        // if (num <= 1) {
-        //     console.log(false); 
-        // } else {
-        //     let i = 2;
-        //     let isPrime = true; 
-
-        //     while (i * i <= num) {
-        //         if (num % i === 0) {
-        //             isPrime = false; 
-        //             break;
-        //         }
-        //         i++;
-        //     }
-
-        //     console.log(isPrime); 
-        // }
-
-         //  revers of 123
-
-        // let num = 123;
-        // let sum=0;
-
-        // while(num > 0){
-        //     remainder = num % 10;
-        //     sum = sum * 10 + remainder;
-        //     num = Math.floor(num / 10);
-        // }
-        // console.log(sum);
-
-        // Prime factoriale
-
-// var num = Number(prompt("Enter the number :"));
-
-// if (num <= 1) {
-//     console.log("The number is not prime.");
-// } 
-// else {
-//     let isPrime = true;
-//     let i = 2;
-
-//     while (i * i <= num) {
-//         if (num % i === 0) {
-//             isPrime = false;
-//             break;
-//         }
-//         i++;
-//     }
-
-//     if (isPrime) {
-//         let factorial = 1;
-//         let j = num;
-
-//         while (j > 1) {
-//             factorial *= j;
-//             j--;
-//         }
-
-//         console.log("The prime factorial is: " + factorial);
-//     } 
-//     else {
-//         console.log("The number is not prime.");
-//     }
-// }
-
-
-
-        
-    </script>
+     </script>
 </body>
 </html>
