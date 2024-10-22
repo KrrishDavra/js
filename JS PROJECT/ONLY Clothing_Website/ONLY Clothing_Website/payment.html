@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .payment {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px;
+      background-color: white;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 15px;
+      box-shadow: 0px 0px 13px 2px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    .payment .close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      cursor: pointer;
+      background: linear-gradient(90deg, #ff7e5f, #feb47b);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 8px;
+      font-size: 14px;
+    }
+
+    .payment .payTitle {
+      margin-top: 0px;
+      margin-bottom: 10px;
+      color: #333;
+      font-size: 20px;
+    }
+
+    .payment label {
+      display: block;
+      margin-top: 8px;
+      color: #555;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .payment input {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .payment input.error {
+      border-color: red;
+    }
+
+    .payment .errorMsg {
+      color: red;
+      font-size: 12px;
+      margin-top: 3px;
+      display: none;
+    }
+
+    .payment .cardInfo {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 10px;
+      /* Adjust the gap between card info inputs */
+    }
+
+    .payment .cardInfo input {
+      width: calc(33% - 10px);
+      font-size: 14px;
+      padding: 8px;
+    }
+
+    .payment .payButton {
+      background: linear-gradient(90deg, #ff7e5f, #feb47b);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 15px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .payment .payButton:hover {
+      background: linear-gradient(90deg, #feb47b, #ff7e5f);
+    }
+
+    .payment .cardIcons {
+      margin: 8px 0;
+    }
+
+    .payment .cardIcon {
+      margin-right: 8px;
+      width: 35px;
+      /* Reduce the size of the card icons */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="payment">
+    <span class="close">X</span>
+    <h1 class="payTitle">Personal Information</h1>
+    <label>Name and Surname</label>
+    <input type="text" placeholder="ONLY" class="payInput" id="name">
+    <span class="errorMsg" id="nameError">Please fill out your name.</span>
+
+    <label>Phone Number</label>
+    <input type="text" placeholder="(+91) 01 2345 6789" class="payInput" id="phone">
+    <span class="errorMsg" id="phoneError">Please fill out your phone number.</span>
+
+    <label>Address</label>
+    <input type="text" placeholder="562 Wellington Road, Street 32, San Francisco" class="payInput" id="address">
+    <span class="errorMsg" id="addressError">Please fill out your address.</span>
+
+    <h1 class="payTitle">Card Information</h1>
+    <div class="cardIcons">
+      <img src="img/visa.png" width="40" alt="" class="cardIcon">
+      <img src="img/master.png" alt="" width="40" class="cardIcon">
+    </div>
+    <input type="password" class="payInput" placeholder="Card Number" id="cardNumber">
+    <span class="errorMsg" id="cardError">Please enter your card number.</span>
+
+    <div class="cardInfo">
+      <input type="text" placeholder="mm" class="payInput sm" id="expMonth">
+      <input type="text" placeholder="yyyy" class="payInput sm" id="expYear">
+      <input type="text" placeholder="cvv" class="payInput sm" id="cvv">
+    </div>
+    <span class="errorMsg" id="expError">Please enter your card expiration date and CVV.</span>
+
+    <button class="payButton">Checkout!</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.close').addEventListener('click', closePaymentForm);
+      document.querySelector('.payButton').addEventListener('click', handlePayment);
+    });
+
+    function closePaymentForm() {
+      document.querySelector('.payment').style.display = 'none';
+    }
+
+    function handlePayment() {
+      let valid = true;
+
+      const fields = [
+        { id: 'name', errorId: 'nameError' },
+        { id: 'phone', errorId: 'phoneError' },
+        { id: 'address', errorId: 'addressError' },
+        { id: 'cardNumber', errorId: 'cardError' },
+        { id: 'expMonth', errorId: 'expError' },
+        { id: 'expYear', errorId: 'expError' },
+        { id: 'cvv', errorId: 'expError' },
+      ];
+
+      fields.forEach(field => {
+        const input = document.getElementById(field.id);
+        const error = document.getElementById(field.errorId);
+        if (input.value.trim() === '') {
+          input.classList.add('error');
+          error.style.display = 'block';
+          valid = false;
+        } else {
+          input.classList.remove('error');
+          error.style.display = 'none';
+        }
+      });
+
+      if (valid) {
+        alert('Payment successfully completed!');
+        localStorage.removeItem('cart');
+        closePaymentForm();
+        window.location.href = 'cart.html';
+      }
+    } 
+
+
+    function showPaymentForm() {
+      document.querySelector('.payment').style.display = 'flex';
+    }
+  </script>
+</body>
+
+</html>
