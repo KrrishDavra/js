@@ -118,24 +118,25 @@
 
         // Q7-armstrong number
 
-        // let n = Number(prompt("enter the number :"))
-        // let rem; temp = 0;
-        // y = n;
+        let n = Number(prompt("enter the number :"))
+        let rem; temp = 0;
+        y = n;
 
-        // while (n > 0) {
-        //     rem = n % 10;
-        //     temp = temp + (rem * rem * rem);
-        //     n = parseInt(n / 10);
-        // }
+        while (n > 0) {
+            rem = n % 10;
+            temp = temp + (rem * rem * rem);
+            n = parseInt(n / 10);
+        }
 
-        // console.log(temp);
+        console.log(temp);
 
-        // if (temp == y) {
-        //     document.write("this is the armstrong number")
-        // }
-        // else {
-        //     document.write("this is a not the armstrong number")
-        // }
+        if (temp == y) {
+            document.write("this is the armstrong number")
+        }
+        else {
+            document.write("this is a not the armstrong number")
+        } 
+        
 
 
        
