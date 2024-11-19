@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        /* Body styling with a nice gradient background */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6e7a7d, #5c2a7d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Form styling with shadows and rounded corners */
+        form {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            width: 320px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Input fields */
+        input[type="number"] {
+            width: 80%;
+            padding: 12px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            outline: none;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Buttons with smooth hover effects */
+        button {
+            width: 70px;
+            height: 70px;
+            margin: 15px;
+            border: none;
+            border-radius: 50%;
+            font-size: 28px;
+            background: linear-gradient(45deg, #ff6a00, #ee0979);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        button:active {
+            transform: translateY(2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Result text */
+        #result {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff6a00;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            transition: opacity 0.5s ease;
+        }
+
+        /* Error message */
+        .error {
+            color: #ff3d3d;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.6);
+        }
+
+        /* Style for the labels */
+        label {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Adding a nice footer text for extra style */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="firstNumber">First Number:</label>
+        <input type="number" id="firstNumber" placeholder="Enter first number">
+
+        <br>
+
+        <label for="secondNumber">Second Number:</label>
+        <input type="number" id="secondNumber" placeholder="Enter second number">
+
+        <h1 id="result">Result</h1>
+
+        <button type="button" onclick="calculate('+')">+</button>
+        <button type="button" onclick="calculate('-')">-</button>
+        <button type="button" onclick="calculate('*')">*</button>
+        <button type="button" onclick="calculate('/')">/</button>
+    </form>
+
+    <footer>
+        <p>Made with ❤️ by Krrish Davara</p>
+    </footer>
+
+    <script>
+        function calculate(operator) {
+            const firstNumber = parseFloat(document.getElementById('firstNumber').value);
+            const secondNumber = parseFloat(document.getElementById('secondNumber').value);
+
+            let result;
+
+            switch (operator) {
+                case '+':
+                    result = firstNumber + secondNumber;
+                    break;
+                case '-':
+                    result = firstNumber - secondNumber;
+                    break;
+                case '*':
+                    result = firstNumber * secondNumber;
+                    break;
+                case '/':
+                    if (secondNumber === 0) {
+                        result = "Cannot divide by zero!";
+                    } else {
+                        result = firstNumber / secondNumber;
+                    }
+                    break;
+                default:
+                    result = "Invalid operator!";
+            }
+
+            const resultElement = document.getElementById('result');
+            resultElement.innerText = result;
+            resultElement.style.opacity = 0;
+            setTimeout(() => {
+                resultElement.style.opacity = 1;
+            }, 100);
+        }
+    </script>
+</body>
+</html>

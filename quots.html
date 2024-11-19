@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="quote"></p>
+    <button id="newquotes">click</button>
+
+    <script>
+        var quotes = [
+            "    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, culpa! 1",
+            "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum. 2",
+            "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, culpa! 3",
+            "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum 4."
+        ]
+
+        function getQuotes(){
+            var quotesElement=Math.floor(Math.random()*quotes.length)
+            return quotes[quotesElement]
+        }
+
+        function display(){
+            var dis = document.getElementById("quote")
+            dis.textContent = getQuotes()
+        }
+
+        document.getElementById("newquotes").addEventListener("click" , display)
+    </script>
+</body>
+</html>

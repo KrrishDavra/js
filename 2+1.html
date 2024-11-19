@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            background: linear-gradient(45deg, #ff7a18, #af002d, #319197);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Form Styling */
+        form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        form:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        h1:hover {
+            color: #ff7a18;
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ff7a18;
+            box-shadow: 0 0 8px rgba(255, 122, 24, 0.5);
+            outline: none;
+        }
+
+        button {
+            background-color: #ff7a18;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #e65b00;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+
+        /* Animations */
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" placeholder="Enter your first name">
+    
+        <br><br>
+    
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" placeholder="Enter your last name">
+    
+        <h1 id="fullName">Full Name</h1>
+        
+        <button type="button" onclick="updateFullName()">Submit</button>
+    </form>
+    
+    <script>
+        function updateFullName() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+    
+            const fullName = firstName + ' ' + lastName;
+    
+            document.getElementById('fullName').innerText = fullName || 'Full Name'; 
+        }
+    </script>
+    
+    
+</body>
+</html>
+
+
