@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="abc">sum</h1>
+    <!-- <button onclick="fun()">sum</button> -->
+
+    <h1 id="def">sum</h1>
+    <!-- <button onclick="fun2()">sum</button> -->
+
+    <h1 id="ghi">sum</h1>
+    <!-- <button onclick="fun3()">sum</button> -->
+
+    <h1 id="jkl">sum</h1>
+    <!-- <button onclick="fun4()">sum</button> -->
+
+    <button onclick="fun5()">all</button>
+
+    <script>
+        var num1, num2
+
+        function fun5() {
+            num1 = Number(prompt("enter the num"))
+            num2 = Number(prompt("enter the num"))
+            fun()
+            fun2()
+            fun3()
+            fun4()
+        }
+        function fun() {
+            // var num1 = Number(prompt("enter the num"))
+            // var num2 = Number(prompt("enter the num"))
+            var sum = num1 + num2;
+            document.getElementById("abc").innerHTML = "Sum: " + sum;
+        }
+
+        function fun2() {
+            // var num1 = Number(prompt("enter the num"))
+            // var num2 = Number(prompt("enter the num"))
+            var sum = num1 - num2;
+            document.getElementById("def").innerHTML = "Sum: " + sum;
+        }
+        function fun3() {
+            // var num1 = Number(prompt("enter the num"))
+            // var num2 = Number(prompt("enter the num"))
+            var sum = num1 * num2;
+            document.getElementById("ghi").innerHTML = "Sum: " + sum;
+        }
+        function fun4() {
+            // var num1 = Number(prompt("enter the num"))
+            // var num2 = Number(prompt("enter the num"))
+            var sum = num1 / num2;
+            document.getElementById("jkl").innerHTML = "Sum: " + sum;
+        }
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
