@@ -4,6 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
+        }
+    
+        #quote {
+            font-size: 1.5rem;
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            color: #555;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        #quote:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        }
+    
+        #newquotes {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: white;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    
+        #newquotes:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+        }
+    
+        #newquotes:active {
+            transform: scale(0.95);
+        }
+    </style>
+    
 </head>
 <body>
     <p id="quote"></p>
@@ -11,23 +69,23 @@
 
     <script>
         var quotes = [
-            "    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, culpa! 1",
-            "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum. 2",
-            "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, culpa! 3",
-            "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum 4."
+            "    “Be yourself; everyone else is already taken.” ― Oscar Wilde    ",
+            "    “A room without books is like a body without a soul.” ― Marcus Tullius Cicero    ",
+            "   “You only live once, but if you do it right, once is enough.” ― Mae West    ",
+            "    “If you tell the truth, you don't have to remember anything.” ― Mark Twain    "
         ]
 
-        function getQuotes(){
-            var quotesElement=Math.floor(Math.random()*quotes.length)
-            return quotes[quotesElement]
-        }
+   function random(){
+    var random = Math.floor(Math.random() * quotes.length)
+    return quotes [random]
+   }
 
-        function display(){
-            var dis = document.getElementById("quote")
-            dis.textContent = getQuotes()
-        }
+   function display(){
+    var dis = document.getElementById("quote")
+    dis.innerHTML = random()
+   }
 
-        document.getElementById("newquotes").addEventListener("click" , display)
+   document.getElementById("newquotes").addEventListener("click" , display)
     </script>
 </body>
 </html>
