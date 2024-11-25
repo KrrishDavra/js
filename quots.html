@@ -75,17 +75,17 @@
             "    “If you tell the truth, you don't have to remember anything.” ― Mark Twain    "
         ]
 
-   function random(){
-    var random = Math.floor(Math.random() * quotes.length)
-    return quotes [random]
-   }
+        function random(){
+            var random = Math.floor(Math.random() * quotes.length)
+            return quotes [random]
+        }
 
-   function display(){
-    var dis = document.getElementById("quote")
-    dis.innerHTML = random()
-   }
+        function display(){
+            var dis = document.getElementById("quote")
+            dis.innerHTML = random()
+        }
 
-   document.getElementById("newquotes").addEventListener("click" , display)
+        document.getElementById("newquotes").addEventListener("click" , display)
     </script>
 </body>
 </html>

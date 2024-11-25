@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // bubble short 
+
+        // let arr = [64, 34, 25, 12, 22, 11, 90];
+
+        // Bubble Sort
+        // for (let i = 0; i < arr.length - 1; i++) {
+        // for (let j = 0; j < arr.length - i - 1; j++) {
+        // if (arr[j] > arr[j + 1]) {
+        // Swap arr[j] and arr[j + 1]
+        // let temp = arr[j];
+        // arr[j] = arr[j + 1];
+        // arr[j + 1] = temp;
+        // }
+        // }
+        // }
+
+        // console.log("Sorted array:", arr);
+
+
+        // selection short 
+
+        // let arr = [64, 25, 12, 22, 11]; 
+
+        // for (let i = 0; i < arr.length - 1; i++) {
+        // let minIndex = i;
+
+        // for (let j = i + 1; j < arr.length; j++) {
+        // if (arr[j] < arr[minIndex]) {
+        // minIndex = j;
+        // }
+        // }
+
+        // if (minIndex !== i) {
+        // let temp = arr[i];
+        // arr[i] = arr[minIndex];
+        // arr[minIndex] = temp;
+        // }
+        // }
+
+        // console.log("Sorted array:", arr);
+
+        //  delete element
+        // var arr = [10, 20, 30, 40, 50];
+        // var index = 2;
+
+        // for (let i = index - 1; i < arr.length - 1; i++) {
+        //     arr[i] = arr[i + 1];
+        // }
+        // arr.length--;
+        // console.log(arr);
+
+        // insert element 
+
+        var arr = [10, 20, 30, 40, 50];
+        var index = 2;
+        var element = 35;
+        for (let i = arr.length - 1; i >= index; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[index] = element;
+        console.log(arr);
+
+
+    </script>
+</body>
+
+</html>
