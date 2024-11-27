@@ -11,21 +11,19 @@
     <script>
         // bubble short 
 
-        // let arr = [64, 34, 25, 12, 22, 11, 90];
+        let arr = [14, 22, 43, 88, 90, 62];
 
-        // Bubble Sort
-        // for (let i = 0; i < arr.length - 1; i++) {
-        // for (let j = 0; j < arr.length - i - 1; j++) {
-        // if (arr[j] > arr[j + 1]) {
-        // Swap arr[j] and arr[j + 1]
-        // let temp = arr[j];
-        // arr[j] = arr[j + 1];
-        // arr[j + 1] = temp;
-        // }
-        // }
-        // }
+for (let i = 0; i < arr.length - 1; i++) {
+  for (let j = 0; j < arr.length - i - 1; j++) {
+    if (arr[j] > arr[j + 1]) {
+      let temp = arr[j];
+      arr[j] = arr[j + 1];
+      arr[j + 1] = temp;
+    }
+  }
+}
 
-        // console.log("Sorted array:", arr);
+console.log(arr); 
 
 
         // selection short 
@@ -62,14 +60,14 @@
 
         // insert element 
 
-        var arr = [10, 20, 30, 40, 50];
-        var index = 2;
-        var element = 35;
-        for (let i = arr.length - 1; i >= index; i--) {
-            arr[i] = arr[i - 1];
-        }
-        arr[index] = element;
-        console.log(arr);
+        // var arr = [10, 20, 30, 40, 50];
+        // var index = 2;
+        // var element = 35;
+        // for (let i = arr.length - 1; i >= index; i--) {
+        //     arr[i] = arr[i - 1];
+        // }
+        // arr[index] = element;
+        // console.log(arr);
 
 
     </script>
