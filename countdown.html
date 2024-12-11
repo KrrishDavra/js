@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Countdown</title>
+
+    <style>
+        h1{
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="countdown">10</h1>
+
+<script>
+    let countdownValue = 10;
+
+    const countdown = setInterval(() => {
+        document.getElementById("countdown").innerText = countdownValue;
+        countdownValue--;
+
+        if (countdownValue < 0) {
+            clearInterval(countdown);
+            document.getElementById("countdown").innerText = "Time's up!";
+        }
+    }, 1000); 
+</script>
+
+</body>
+</html>
+
+
+
