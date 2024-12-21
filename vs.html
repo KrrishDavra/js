@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="it">
+        <button onclick="vs()">add</button>
+        <div id="tasklist"></div>
+
+    </div>
+
+    <script>
+        function vs(){
+            var input = document.getElementById("it").value;
+            
+            var o = document.getElementById("tasklist");
+             
+            
+            var newcontent = document.createElement("h1");
+            newcontent.innerHTML = input;
+
+            
+            var del = document.createElement("button");
+            del.textContent = "deeelte"
+
+
+            del.onclick = function(){
+                o.removeChild(newcontent)
+                o.removeChild(del)
+            }
+            
+            o.appendChild(newcontent)
+            o.appendChild(del)
+            
+            
+            var input = document.getElementById("it").value = " ";
+        }
+    </script>
+</body>
+</html>
