@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Product Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        .product-container {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            padding: 25px;
+        }
+
+        .product-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+        }
+
+        .discount {
+            color: #e53935;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .thumbnails img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .thumbnails img:hover {
+            border-color: #007bff;
+            transform: scale(1.1);
+        }
+
+        .sizes button {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 8px 15px;
+            background-color: white;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .sizes button:hover,
+        .sizes button.active {
+            border-color: #007bff;
+            background-color: #e3f2fd;
+            transform: scale(1.05);
+        }
+
+        .increment-decrement {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #f1f3f4;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 5px 10px;
+        }
+
+        .increment-decrement button {
+            border: none;
+            color: #000000;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .increment-decrement button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .increment-decrement input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .btn-buy {
+            background-color: #ff9800;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
+        }
+
+        .btn-buy:hover {
+            background-color: #e68900;
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .warranty-section {
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+            margin-top: 20px;
+        }
+
+        .postal-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .form-control {
+            flex: 1;
+        }
+
+        .btn-check {
+            background-color: #ff8c00;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            flex-shrink: 0;
+
+        }
+
+        .btn-check:hover {
+            background-color: #e67e00;
+        }
+
+
+        .form-control {
+            flex: 1;
+            border-radius: 5px;
+        }
+
+        .btn-check {
+            background-color: #ff8c00;
+            color: white;
+            border: none;
+        }
+
+        .btn-check:hover {
+            background-color: #e67e00;
+        }
+
+        .compare-box {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .product-title {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .product-price {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+
+            .thumbnails {
+                justify-content: center;
+            }
+
+            .sizes {
+                justify-content: center;
+            }
+
+            .btn-buy {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="product-container row">
+            <!-- Image Section -->
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <img id="main-image" src="hof.png" class="img-fluid rounded mb-3" alt="Product Image">
+                <div class="thumbnails d-flex flex-wrap gap-3">
+                    <img src="https://shop.hofindia.com/cdn/shop/files/71etX8bdGoL._SL1170.jpg?v=1734162215"
+                        onclick="changeImage(this.src)" alt="Thumbnail 1">
+                    <img src="https://shop.hofindia.com/cdn/shop/files/71lO-1M1JyS._SL1500.jpg?v=1734162215"
+                        onclick="changeImage(this.src)" alt="Thumbnail 2">
+                    <img src="https://shop.hofindia.com/cdn/shop/files/71QIf-C9OtL._SL1500_4e0baf69-aa8e-4bef-a55e-7e04cb6dbc5d.jpg?v=1734162215"
+                        onclick="changeImage(this.src)" alt="Thumbnail 3">
+                    <img src="https://shop.hofindia.com/cdn/shop/files/61cobaD_ofL._SL1500.jpg?v=1734162215&width=823"
+                        onclick="changeImage(this.src)" alt="Thumbnail 4">
+                </div>
+            </div>
+
+            <!-- Details Section -->
+            <div class="col-lg-6 col-md-6 col-sm-12 d-flex flex-column">
+                <h1 class="product-title">HOF F502 Ergonomic Mid Back Office Computer Desk Chair</h1>
+                <div class="product-price">₹6,490.00
+                    <span class="original-price">₹11,100.00</span>
+                    <span class="discount">Save ₹4,610.00</span>
+                </div>
+                <p class="text-muted mt-3">1 Year Manufacturer Warranty. Requires Assembly.</p>
+
+                <h5 class="mt-4">Color:</h5>
+                <div class="d-flex gap-2">
+                    <button class="btn border btn-dark" onclick="selectColor('Black')"
+                        style="border-radius: 50%; padding: 15px 10px;">Black</button>
+                    <button class="btn border text-white" onclick="selectColor('Brown')"
+                        style="background-color: brown; border-radius: 50%; padding: 15px 10px;">Brown</button>
+                    <button class="btn border btn-danger" onclick="selectColor('Red')"
+                        style="border-radius: 50%; padding: 15px 15px;">Red</button>
+                    <button class="btn border btn-success" onclick="selectColor('Green')"
+                        style="border-radius: 50%; padding: 15px 10px;">Green</button>
+                </div>
+
+                <h5 class="mt-4">Size:</h5>
+                <div class="sizes d-flex gap-2">
+                    <button onclick="selectSize('Medium Back')">Medium Back</button>
+                </div>
+
+                <!-- Add to Cart Section -->
+                <div class="d-flex align-items-center mt-4 flex-wrap gap-3">
+                    <div class="increment-decrement">
+                        <button class="btn-quantity" onclick="updateQuantity(-1)">-</button>
+                        <input type="number" id="quantity" value="1" min="1">
+                        <button class="btn-quantity" onclick="updateQuantity(1)">+</button>
+                    </div>
+                    <button class="btn btn-buy">Add to Cart</button>
+                </div>
+
+                <div class="container">
+                    <div class="warranty-section">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="postal-check">
+                                    <input type="text" id="postal-code" class="form-control"
+                                        placeholder="Enter Postal Code">
+                                    <button type="button" class="btn btn-warning" onclick="check()">Check</button>
+                                </div>
+
+                            </div>
+                            <hr class="mt-3">
+
+                            <div class="col-md-12 mt-3">
+                                <div>
+                                    <h6 class="mb-1">Warranty & Assembly</h6>
+                                    <p class="mb-0">1 Year Manufacturer Warranty. Require Assembly</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compare-box">
+                            Compare with similar products
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            function changeImage(src) {
+                document.getElementById('main-image').src = src;
+            }
+
+            function selectColor(color) {
+                alert(`You selected: ${color}`);
+            }
+
+            function check() {
+                const postalCode = document.getElementById('postal-code').value.trim();
+                if (postalCode === "") {
+                    alert("Code section is empty");
+                } else {
+                    alert("Code entered successfully");
+                }
+            }
+
+            function updateQuantity(change) {
+                const quantityInput = document.getElementById('quantity');
+                let currentQuantity = parseInt(quantityInput.value);
+                currentQuantity = Math.max(1, currentQuantity + change);
+                quantityInput.value = currentQuantity;
+            }
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

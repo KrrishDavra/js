@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            
+    </style>
+</head>
+<body>
+    <div class=" width ">
+        <h1 class="text-left mb-3">Best Sellers</h1>
+        
+        <div class="row w-100 mb-3 bg-danger overflow-hidden rounded-0 " id="productContainer"></div>
+        <div class="socialBtn float-end ">
+           
+            <div class="nextPrevBtns gap-2 d-flex  ">
+                <button id="prev" href="#" class="btn fs-4 rounded-0 border border-dark text-secondary "><i
+                        class="fa-solid fa-angle-left"></i></button>
+                <button id="next" href="#" class="btn fs-4 rounded-0 border border-dark text-secondary "><i
+                        class="fa-solid fa-angle-right"></i></button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const products = [
+    {
+        id: 1,
+        name: "HOF® F502 Ergonomic Mid Back Office Computer Desk Chair",
+        price: "₹6,490.00",
+        originalPrice: "₹11,100.00",
+        image: "hof.png",
+        isBestSeller: true // Best Seller badge for this product
+    },
+    {
+        id: 2,
+        name: "HOF® F502 Ergonomic Mid Back Office Computer Desk Chair",
+        price: "₹499",
+        originalPrice: "₹11,100.00",
+        image: "hof.png",
+        isBestSeller: true // Add Best Seller badge here
+    },
+    {
+        id: 3,
+        name: "HOF® F502 Ergonomic Mid Back Office Computer Desk Chair",
+        price: "₹299",
+        originalPrice: "₹11,100.00",
+        image: "hof.png",
+        isBestSeller: true // Add Best Seller badge here
+    },
+    {
+        id: 4,
+        name: "HOF® F502 Ergonomic Mid Back Office Computer Desk Chair",
+        price: "₹299",
+        originalPrice: "₹11,100.00",
+        image: "hof.png",
+        isBestSeller: true // Add Best Seller badge here
+    },
+    {
+        id: 5,
+        name: "HOF® F502 Ergonomic Mid Back Office Computer Desk Chair",
+        price: "₹299",
+        originalPrice: "₹11,100.00",
+        image: "hof.png",
+        isBestSeller: true // Add Best Seller badge here
+    },
+    {
+        id: 6,
+        name: "HOF® F502 Ergonomic Mid Back Office Computer Desk Chair",
+        price: "₹299",
+        originalPrice: "₹11,100.00",
+        image: "hof.png",
+        isBestSeller: true // Add Best Seller badge here
+    }
+];
+
+
+function display() {
+    const productContainer = document.getElementById('productContainer');
+    productContainer.innerHTML = '';
+
+    products.forEach((product) => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('col-md-4', 'mb-4');
+
+        productCard.innerHTML = `
+<div class="product-card">
+<span class="badge">Best Seller</span> <!-- Badge appears for all -->
+<i class="favorite">&#9825;</i>
+<img src="${product.image}" alt="${product.name}">
+<h3>${product.name}</h3>
+<p class="price">
+    ${product.price}
+    ${product.originalPrice ? <span class="original-price">${product.originalPrice}</span> : ''}
+</p>
+<div class="actions">
+    <button onclick="addToCart(${product.id})">Add to Cart</button>
+    <label><input type="checkbox"> Add to Compare</label>
+</div>
+</div>
+`;
+
+
+        productContainer.appendChild(productCard);
+    });
+}
+
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingProduct = cart.find(item => item.id === productId);
+    if (!existingProduct) {
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${product.name} has been added to your cart!`);
+    } else {
+        alert(`${product.name} is already in your cart.`);
+    }
+}
+
+display();
+    </script>
+</body>
+</html>
