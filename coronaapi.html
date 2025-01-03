@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #0072ff;
+            margin-bottom: 1rem;
+        }
+
+        input {
+            width: calc(100% - 2rem);
+            padding: 0.5rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            background: #0072ff;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #005bb5;
+        }
+
+        .data-display {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .data-display h3 {
+            color: #0072ff;
+        }
+
+        .data-display p {
+            margin: 0.5rem 0;
+        }
+
+        .error-message {
+            color: #ff4d4d;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            button {
+                width: 100%;
+                padding: 0.7rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>COVID-19 Data</h1>
+        <input type="text" id="country_name" placeholder="Enter a country name...">
+        <button>Get Data</button>
+
+        <div id="coviddata" class="data-display"></div>
+        <p id="error-message" class="error-message"></p>
+    </div>
+
+    <script>
+        document.querySelector("button").addEventListener("click", function () {
+            const country = document.getElementById("country_name").value.trim().toLowerCase();
+
+            if (!country) {
+                document.getElementById('error-message').textContent = 'Please enter a valid country name.';
+                document.getElementById('coviddata').innerHTML = '';
+                return;
+            }
+
+            const apiUrl = `https://disease.sh/v3/covid-19/countries/${country}`;
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Country not found!');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const result = document.getElementById('coviddata');
+                    const errorMessage = document.getElementById('error-message');
+                    errorMessage.textContent = '';
+
+                    result.innerHTML = `
+                        <h3>COVID-19 in ${data.country}</h3>
+                        <p><b>Total Cases: </b>${data.cases}</p>
+                        <p><b>Total Deaths: </b>${data.deaths}</p>
+                        <p><b>Total Recovered: </b>${data.recovered}</p>
+                        <p><b>Active Cases: </b>${data.active}</p>
+                        <p><b>Critical Cases: </b>${data.critical}</p>
+                        <p><b>Tests Conducted: </b>${data.tests}</p>
+                    `;
+                    console.log(data);
+                })
+                .catch(error => {
+                    const errorMessage = document.getElementById('error-message');
+                    errorMessage.textContent = error.message;
+                    document.getElementById('coviddata').innerHTML = '';
+                });
+        });
+    </script>
+</body>
+
+</html>
